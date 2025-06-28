@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rottenlama-backend-stable
+  labels:
+    app: rottenlama-backend
+    version: stable
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: rottenlama-backend
+      version: stable
+  template:
+    metadata:
+      labels:
+        app: rottenlama-backend
+        version: stable
+    spec:
+      containers:
+      - name: rottenlama-backend
+        image: airwa1l/rottenlama-backend:stable
+        ports:
+        - containerPort: 5000
+        env:
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: rottenlama-secrets
+              key: database_url
+        resources:
+          limits:
+            cpu: "0.5"
+            memory: "512Mi"
+          requests:
+            cpu: "0.2"
+            memory: "256Mi"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 30
+          periodSeconds: 30

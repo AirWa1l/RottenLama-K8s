@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rottenlama-frontend-service
+spec:
+  selector:
+    app: rottenlama-frontend
+  ports:
+  - port: 80
+    targetPort: 80
+  type: ClusterIP
