@@ -17,6 +17,7 @@ spec:
         app: rottenlama-frontend
         version: canary
     spec:
+      imagePullPolicy: Never
       containers:
       - name: rottenlama-frontend
         image: airwa1l/rottenlama-frontend:canary
