@@ -17,10 +17,10 @@ spec:
         app: rottenlama-frontend
         version: stable
     spec:
-      imagePullPolicy: Never
       containers:
       - name: rottenlama-frontend
         image: airwa1l/rottenlama-frontend:stable
+        imagePullPolicy: Never
         ports:
         - containerPort: 80
         resources:

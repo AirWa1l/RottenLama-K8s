@@ -17,10 +17,10 @@ spec:
         app: rottenlama-backend
         version: canary
     spec:
-      imagePullPolicy: Never
       containers:
       - name: rottenlama-backend
         image: airwa1l/rottenlama-backend:canary
+        imagePullPolicy: Never
         ports:
         - containerPort: 5000
         env:
